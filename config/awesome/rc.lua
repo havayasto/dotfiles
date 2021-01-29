@@ -511,3 +511,9 @@ client.connect_signal("mouse::enter", function(c)
 end)
 
 beautiful.useless_gap = 4
+
+client.connect_signal("manage", function (c)
+    c.shape = function(cr,w,h)
+        gears.shape.rounded_rect(cr,w,h,10)
+    end
+end)
