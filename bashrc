@@ -18,6 +18,7 @@ HISTFILESIZE=
 
 # vi mode in bash
 set -o vi
+bind 'set show-mode-in-prompt on'
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
