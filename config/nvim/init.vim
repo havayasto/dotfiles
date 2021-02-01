@@ -1,6 +1,9 @@
 " show the name of file which I am currently editing on term titlebar
 set title
 
+" put buffer to the background without writing
+set hidden
+
 " set a nice color scheme
 set termguicolors
 colorscheme base16-default-dark
