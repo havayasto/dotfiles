@@ -8,6 +8,9 @@ colorscheme base16-default-dark
 " using the clipboard as the default register
 set clipboard=unnamed
 
+" disable persistent netrw history
+let g:netrw_dirhistmax=0
+
 " 80 Characters per line is a Standard Worth Sticking to Even Today`
 set colorcolumn=80
 set wrap
@@ -26,12 +29,34 @@ set cmdheight=2
 set number relativenumber
 set nu rnu
 
-"set cursorline
+" <Leader> key is mapped to \ by default but "," is much better
+let mapleader = ","
 
 " TODO check how to move this chunk in extr file
 " only highlight applied in the current window
-augroup CursorLine
-  au!
-  au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
-  au WinLeave * setlocal nocursorline
+
+augroup syntaxtoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * colorscheme base16-default-dark
+  " autocmd BufLeave,FocusLost,InsertEnter   * colorscheme base16-default-dark-syntax_off
+  autocmd BufLeave,FocusLost  * colorscheme base16-default-dark-syntax_off
 augroup END
+
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
+
+
+" Specify a directory for plugins
+" - For Neovim: stdpath('data') . '/plugged'
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugged')
+  Plug 'wincent/command-t'
+  Plug 'wincent/ferret'
+  Plug 'ap/vim-css-color'
+call plug#end()
+
+" command-t options and tweaks
+let g:CommandTHighlightColor="Bold"
