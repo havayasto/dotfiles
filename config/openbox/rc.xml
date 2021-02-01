@@ -818,5 +818,10 @@
 
   # end of the example
 -->
+	<application name="xfce4-terminal">
+		<desktop>1</desktop>
+	</application><application name="Navigator">
+		<desktop>2</desktop>
+	</application>
   </applications>
 </openbox_config>
