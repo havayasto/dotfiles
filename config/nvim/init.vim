@@ -32,6 +32,29 @@ set nu rnu
 " <Leader> key is mapped to \ by default but "," is much better
 let mapleader = ","
 
+" replace tabs with spaces
+set expandtab
+
+" 1 tab = 2 spaces
+set tabstop=2 shiftwidth=2
+
+" when deleting whitespace at the beginning of a line, delete
+" 1 tab worth of spaces (for us this is 2 spaces)
+set smarttab
+
+" when creating a new line, copy the indentation from the line above
+set autoindent
+
+" ignore case when searching
+set ignorecase
+set smartcase
+
+" show the mathing brackets
+set showmatch
+
+" highlight current line
+set cursorline
+
 " TODO check how to move this chunk in extr file
 " only highlight applied in the current window
 
