@@ -1,0 +1,19 @@
+[user]
+	name = Stefan Stoilov
+	email = havayasto@keemail.me
+[core]
+	editor = nvim
+[alias]
+	search = !git rev-list --all | xargs git grep -F
+	se = !git rev-list --all | xargs git grep -F
+	d = diff
+	last = log -1 HEAD --stat
+[help]
+	autocorrect = 10
+[pager]
+	diff = ~/bin/diff-highlight | menos -iFMRSX --pattern='^(commit|diff)'
+	log = ~/bin/diff-highlight | menos -iFMRSX --pattern='^(commit|diff)'
+	show = ~/bin/diff-highlight | menos -iFMRSX --pattern='^(commit|diff)'
+	show-branch = true
+	status = true
+	whatchanged = ~/bin/diff-highlight | menos -iFMRSX --pattern='^(commit|diff)'
