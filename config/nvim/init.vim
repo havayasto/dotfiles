@@ -74,9 +74,53 @@ augroup numbertoggle
   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
 
+" custom statusline
+set laststatus=2
+set statusline=
+set statusline+=\ 
+set statusline+=\ 
+set statusline+=\ 
+set statusline+=\ 
+set statusline+=%{StatuslineMode()}
+set statusline+=%=
+set statusline+=%f
+set statusline+=\ 
+set statusline+=»
+set statusline+=\ 
+set statusline+=%y
+set statusline+=\ 
+set statusline+=§
+set statusline+=\ 
+set statusline+=%{&ff}
+set statusline+=\ 
+set statusline+=҂
+set statusline+=\ 
+set statusline+=%{strlen(&fenc)?&fenc:'none'}
+set statusline+=\ 
+set statusline+=%m
 
-" Specify a directory for plugins
-" - For Neovim: stdpath('data') . '/plugged'
+function! StatuslineMode()
+  let l:mode=mode()
+  if l:mode==#"n"
+    return "(nor)"
+  elseif l:mode==?"v"
+    return "(vis)"
+  elseif l:mode==#"i"
+    return "(ins)"
+  elseif l:mode==#"R"
+    return "(rep)"
+  elseif l:mode==?"s"
+    return "(sel)"
+  elseif l:mode==#"t"
+    return "(ter)"
+  elseif l:mode==#"c"
+    return "(cmd)"
+  elseif l:mode==#"!"
+    return "(shl)"
+  endif
+endfunction
+
+
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
   Plug 'wincent/command-t'
