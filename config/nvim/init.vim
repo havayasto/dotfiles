@@ -182,6 +182,9 @@ function! StatuslineMode()
   endif
 endfunction
 
+" bulgarian phonetic keyboard layout in command mode
+source $HOME/.config/nvim/usr/bg_keymaps.vim
+
 " download, install and load 3r party plugins
 call plug#begin('~/.vim/plugged')
   Plug 'wincent/command-t'
