@@ -17,3 +17,5 @@
 	show-branch = true
 	status = true
 	whatchanged = ~/bin/diff-highlight | menos -iFMRSX --pattern='^(commit|diff)'
+[commit]
+	template = /home/havayasto/.gitmessage
