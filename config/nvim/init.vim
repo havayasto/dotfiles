@@ -185,6 +185,25 @@ endfunction
 " bulgarian phonetic keyboard layout in command mode
 source $HOME/.config/nvim/usr/bg_keymaps.vim
 
+" Set default language
+set spelllang=en
+
+function! LanguageToggle() abort
+  if &l:spelllang == "en"
+    " Switch to Bulgarian
+    setlocal spell
+    setlocal spelllang=bg
+    echom "Switching to Bulgarian"
+  else
+    " Switch to English
+    setlocal spelllang=en
+    echom "Switching to English"
+  endif
+endfunction
+
+" Switch Languages
+command! LanguageToggle call LanguageToggle()
+
 " download, install and load 3r party plugins
 call plug#begin('~/.vim/plugged')
   Plug 'wincent/command-t'
