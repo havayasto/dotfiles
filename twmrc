@@ -1,0 +1,244 @@
+#
+# Default twm configuration file; needs to be kept small to conserve string
+# space in systems whose compilers don't handle medium-sized strings.
+#
+# Sites should tailor this file, providing any extra title buttons, menus, etc.
+# that may be appropriate for their environment.  For example, if most of the
+# users were accustomed to uwm, the defaults could be set up not to decorate
+# any windows and to use meta-keys.
+#
+
+NoGrabServer
+RestartPreviousState
+DecorateTransients
+TitleFont "-adobe-helvetica-bold-r-normal--*-120-*-*-*-*-*-*"
+ResizeFont "-adobe-helvetica-bold-r-normal--*-120-*-*-*-*-*-*"
+MenuFont "-adobe-helvetica-bold-r-normal--*-120-*-*-*-*-*-*"
+IconFont "-adobe-helvetica-bold-r-normal--*-100-*-*-*-*-*-*"
+IconManagerFont "-adobe-helvetica-bold-r-normal--*-100-*-*-*"
+#ClientBorderWidth
+
+Color
+{
+    BorderColor "slategrey"
+    DefaultBackground "rgb:2/a/9"
+    DefaultForeground "gray85"
+    TitleBackground "rgb:2/a/9"
+    TitleForeground "gray85"
+    MenuBackground "rgb:2/a/9"
+    MenuForeground "gray85"
+    MenuBorderColor "slategrey"
+    MenuTitleBackground "gray70"
+    MenuTitleForeground "rgb:2/a/9"
+    IconBackground "rgb:2/a/9"
+    IconForeground "gray85"
+    IconBorderColor "gray85"
+    IconManagerBackground "rgb:2/a/9"
+    IconManagerForeground "gray85"
+}
+
+#
+# Define some useful functions for motion-based actions.
+#
+MoveDelta 3
+Function "move-or-lower" { f.move f.deltastop f.lower }
+Function "move-or-raise" { f.move f.deltastop f.raise }
+Function "move-or-iconify" { f.move f.deltastop f.iconify }
+
+#
+# Set some useful bindings.  Sort of uwm-ish, sort of simple-button-ish
+#
+Button1 = : root : f.menu "main"
+Button2 = : root : f.menu "windowops"
+
+Button1 = m : window|icon : f.function "move-or-lower"
+Button2 = m : window|icon : f.iconify
+Button3 = m : window|icon : f.function "move-or-raise"
+
+Button1 = : title : f.function "move-or-raise"
+Button2 = : title : f.raiselower
+
+Button1 = : icon : f.function "move-or-iconify"
+Button2 = : icon : f.iconify
+
+Button1 = : iconmgr : f.iconify
+Button2 = : iconmgr : f.iconify
+
+#
+# And a menus with the usual things
+#
+menu "main"
+{
+		"Main Menu"		f.title
+		"Debian"		f.menu "/Debian"
+		""			f.nop
+		"Show Icon Manager"	f.showiconmgr
+		"Hide Icon Manager"	f.hideiconmgr
+		""			f.nop
+		"Exit"			f.menu "Quit-Verify"
+}
+
+menu "Quit-Verify"
+{
+		"Really quit twm?"	f.title
+		"No, restart twm"	f.restart
+		"Yes, really quit"	f.quit
+}
+
+menu "windowops"
+{
+		"Window Ops"		f.title
+		""			f.nop
+		"Iconify"		f.iconify
+		"Resize"		f.resize
+		"Move"			f.move
+		"Raise"			f.raise
+		"Lower"			f.lower
+		""			f.nop
+		"Focus"			f.focus
+		"Unfocus"		f.unfocus
+		""			f.nop
+		"Delete"		f.delete
+		"Destroy"		f.destroy
+}
+
+# Automatically generated file. Do not edit (see /usr/share/doc/menu/html/index.html)
+
+menu "/Debian/Applications/Accessibility"
+{
+  "Xmag"    f.exec  "xmag &"
+}
+menu "/Debian/Applications/Editors"
+{
+  "Xedit"    f.exec  "xedit &"
+}
+menu "/Debian/Applications/Graphics"
+{
+  "GEM"    f.exec  "/usr/bin/pd-gem &"
+  "X Window Snapshot"    f.exec  "xwd | xwud &"
+}
+menu "/Debian/Applications/Network/Communication"
+{
+  "Telnet"    f.exec  "x-terminal-emulator  -T \"Telnet\" -e sh -c \"/usr/bin/telnet.netkit\" &"
+  "Xbiff"    f.exec  "xbiff &"
+}
+menu "/Debian/Applications/Network/Web Browsing"
+{
+  "w3m"    f.exec  "x-terminal-emulator  -T \"w3m\" -e sh -c \"/usr/bin/w3m /usr/share/doc/w3m/MANUAL.html\" &"
+}
+menu "/Debian/Applications/Network"
+{
+  "Communication" f.menu "/Debian/Applications/Network/Communication"
+  "Web Browsing" f.menu "/Debian/Applications/Network/Web Browsing"
+}
+menu "/Debian/Applications/Programming"
+{
+  "Tclsh8.6"    f.exec  "x-terminal-emulator  -T \"Tclsh8.6\" -e sh -c \"/usr/bin/tclsh8.6\" &"
+  "TkWish8.6"    f.exec  "x-terminal-emulator -e /usr/bin/wish8.6 &"
+}
+menu "/Debian/Applications/Science/Mathematics"
+{
+  "Xcalc"    f.exec  "xcalc &"
+}
+menu "/Debian/Applications/Science"
+{
+  "Mathematics" f.menu "/Debian/Applications/Science/Mathematics"
+}
+menu "/Debian/Applications/Shells"
+{
+  "Bash"    f.exec  "x-terminal-emulator  -T \"Bash\" -e sh -c \"/bin/bash --login\" &"
+  "Dash"    f.exec  "x-terminal-emulator  -T \"Dash\" -e sh -c \"/bin/dash -i\" &"
+  "Sh"    f.exec  "x-terminal-emulator  -T \"Sh\" -e sh -c \"/bin/sh --login\" &"
+}
+menu "/Debian/Applications/System/Administration"
+{
+  "Debian Task selector"    f.exec  "x-terminal-emulator  -T \"Debian Task selector\" -e sh -c \"su-to-root -c tasksel\" &"
+  "Editres"    f.exec  "editres &"
+  "Logout (obsession)"    f.exec  "/usr/bin/obsession-logout &"
+  "Xclipboard"    f.exec  "xclipboard &"
+  "Xfontsel"    f.exec  "xfontsel &"
+  "Xkill"    f.exec  "xkill &"
+  "Xrefresh"    f.exec  "xrefresh &"
+}
+menu "/Debian/Applications/System/Hardware"
+{
+  "Xvidtune"    f.exec  "xvidtune &"
+}
+menu "/Debian/Applications/System/Monitoring"
+{
+  "Top"    f.exec  "x-terminal-emulator  -T \"Top\" -e sh -c \"/usr/bin/top\" &"
+  "Xconsole"    f.exec  "xconsole -file /dev/xconsole &"
+  "Xev"    f.exec  "x-terminal-emulator -e xev &"
+  "Xload"    f.exec  "xload &"
+}
+menu "/Debian/Applications/System"
+{
+  "Administration" f.menu "/Debian/Applications/System/Administration"
+  "Hardware" f.menu "/Debian/Applications/System/Hardware"
+  "Monitoring" f.menu "/Debian/Applications/System/Monitoring"
+}
+menu "/Debian/Applications/Viewers"
+{
+  "Xditview"    f.exec  "xditview &"
+}
+menu "/Debian/Applications"
+{
+  "Accessibility" f.menu "/Debian/Applications/Accessibility"
+  "Editors" f.menu "/Debian/Applications/Editors"
+  "Graphics" f.menu "/Debian/Applications/Graphics"
+  "Network" f.menu "/Debian/Applications/Network"
+  "Programming" f.menu "/Debian/Applications/Programming"
+  "Science" f.menu "/Debian/Applications/Science"
+  "Shells" f.menu "/Debian/Applications/Shells"
+  "System" f.menu "/Debian/Applications/System"
+  "Viewers" f.menu "/Debian/Applications/Viewers"
+}
+menu "/Debian/Games/Toys"
+{
+  "Oclock"    f.exec  "oclock &"
+  "Xclock (analog)"    f.exec  "xclock -analog &"
+  "Xclock (digital)"    f.exec  "xclock -digital -update 1 &"
+  "Xeyes"    f.exec  "xeyes &"
+  "Xlogo"    f.exec  "xlogo &"
+}
+menu "/Debian/Games"
+{
+  "Toys" f.menu "/Debian/Games/Toys"
+}
+menu "/Debian/Help"
+{
+  "Xman"    f.exec  "xman &"
+}
+menu "/Debian/Screen/Locking"
+{
+  "Lock Screen (XScreenSaver)"    f.exec  "/usr/bin/xscreensaver-command -lock &"
+}
+menu "/Debian/Screen/Saving"
+{
+  "Activate ScreenSaver (Next)"    f.exec  "/usr/bin/xscreensaver-command -next &"
+  "Activate ScreenSaver (Previous)"    f.exec  "/usr/bin/xscreensaver-command -prev &"
+  "Activate ScreenSaver (Random)"    f.exec  "/usr/bin/xscreensaver-command -activate &"
+  "Demo Screen Hacks"    f.exec  "/usr/bin/xscreensaver-command -demo &"
+  "Disable XScreenSaver"    f.exec  "/usr/bin/xscreensaver-command -exit &"
+  "Enable XScreenSaver"    f.exec  "/usr/bin/xscreensaver &"
+  "Reinitialize XScreenSaver"    f.exec  "/usr/bin/xscreensaver-command -restart &"
+  "ScreenSaver Preferences"    f.exec  "/usr/bin/xscreensaver-command -prefs &"
+}
+menu "/Debian/Screen"
+{
+  "Locking" f.menu "/Debian/Screen/Locking"
+  "Saving" f.menu "/Debian/Screen/Saving"
+}
+menu "/Debian/Window Managers"
+{
+ "awesome" f.startwm "/usr/bin/awesome"
+ "Twm" f.startwm "twm"
+}
+menu "/Debian"
+{
+  "Applications" f.menu "/Debian/Applications"
+  "Games" f.menu "/Debian/Games"
+  "Help" f.menu "/Debian/Help"
+  "Screen" f.menu "/Debian/Screen"
+  "Window Managers" f.menu "/Debian/Window Managers"
+}
