@@ -1,0 +1,93 @@
+# automatically add new windows to the current group
+sticky yes
+
+# snap windows to edges at 4 pixels distance
+snapdist 10
+
+# leave a gap
+gap 10 10 10 10
+
+# set font for menus
+fontname "Source Code Pro:pixelsize=16"
+
+# set border width in pixels
+borderwidth 2
+
+# set border colors
+color activeborder "#f7ca88"
+color inactiveborder "#181818"
+
+# remove all default keybindings
+unbind-key all
+
+# mod + enter = new terminal
+bind-key 4-Return terminal
+
+# mod + backspace = hide window
+bind-key 4-BackSpace window-hide
+
+# mod/alt + tab = cycle through current windows
+bind-key 4-Tab window-cycle
+bind-key M-Tab window-cycle
+
+# mod + w = kill window
+bind-key 4-w window-delete
+
+# set a window's label
+bind-key 4-n window-menu-label
+
+# mod + $N = show only windows for group $N
+bind-key 4-1 group-only-1
+bind-key 4-2 group-only-2
+bind-key 4-3 group-only-3
+
+# mod + shift +$N = move window to group $N
+bind-key 4S-1 window-movetogroup-1
+bind-key 4S-2 window-movetogroup-2
+bind-key 4S-3 window-movetogroup-3
+
+# mod + 0 = toggle showing windows from all groups
+bind-key 4-0 group-toggle-all
+
+# mod + G = toggle current window's group membership
+bind-key 4-g window-group
+
+# mod + F = make current window fullscreen
+bind-key 4-f window-fullscreen
+
+# mod + M = maximize current window
+bind-key 4-m window-maximize
+
+# mod + V = tile windows vertically, current window to the left
+bind-key 4-v window-vtile
+
+# mod + / = show popup menu of current windows
+bind-key 4-slash menu-window
+
+# mod + ? = show popup menu to run an arbitrary command
+bind-key 4-question menu-exec
+
+# mod + shift + R = restart cwm, reloading configuration
+bind-key 4S-r restart
+
+# mod + shift + E = log out
+bind-key 4S-e quit
+
+# unbind default mouse actions
+unbind-mouse M-1
+unbind-mouse CM-1
+unbind-mouse M-2
+unbind-mouse M-3
+unbind-mouse CMS-3
+
+# mod + left click drag = move window
+bind-mouse 4-1 window-move
+
+# mod + right click drag = resize window
+bind-mouse 4-3 window-resize
+
+# mod + middle click = lower window's focus
+bind-mouse 4-2 window-lower
+
+# mod + shift + middle click = hide window
+bind-mouse 4S-2 window-hide

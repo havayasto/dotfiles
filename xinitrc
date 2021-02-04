@@ -12,4 +12,4 @@ xsetroot -bg \#939393 -mod 2 2 &
 setxkbmap -model pc105 -layout us,bg -variant  ,phonetic -option grp:alt_shift_toggle &
 
 # start awesome window manager
-openbox
+openbsd-cwm
